@@ -1,0 +1,21 @@
+<mat-toolbar color="primary">
+   <span>Analizador Léxico Sintáctico</span>
+   <span class="example-spacer"></span>
+   <button mat-icon-button matTooltip="Procesar codigo" (click)="lexico()">
+     <mat-icon>view_in_ar</mat-icon>
+   </button>
+   <button mat-icon-button  matTooltip="Limpiar" (click)="limpiar()">
+    <mat-icon>sync</mat-icon>
+  </button>
+ </mat-toolbar>
+<div fxLayout="row">
+    <div fxFlex class="editor">
+        <ngx-monaco-editor [options]="editorOptions" [(ngModel)]="code"></ngx-monaco-editor>
+    </div>
+    <div fxFlex class="lexico">
+        <p *ngIf="isSintactico" style="color: green;">{{sintacticoResponse}}</p>
+        <p *ngIf="!isSintactico" style="color: red;">{{sintacticoResponse}}</p>
+        <div [innerHTML]="lexicoReponse"></div>
+    </div>
+</div>
+
